@@ -78,17 +78,19 @@ function QualityFilter:New(parent)
 	local f = self:Bind(CreateFrame('Frame', nil, parent))
 
 	local prev
-	for quality = -1, 5 do
-		local button = FilterButton:Create(f, quality)
-		if prev then
-			button:SetPoint('LEFT', prev, 'RIGHT', 1, 0)
-		else
-			button:SetPoint('LEFT')
+	for quality = -1, 7 do
+		if quality ~= 6 then	-- ignore relic quality items, which are not really in game
+			local button = FilterButton:Create(f, quality)
+			if prev then
+				button:SetPoint('LEFT', prev, 'RIGHT', 1, 0)
+			else
+				button:SetPoint('LEFT')
+			end
+			prev = button
 		end
-		prev = button
 	end
 
-	f:SetWidth(SIZE * 6)
+	f:SetWidth(SIZE * 7)
 	f:SetHeight(SIZE)
 	f:UpdateHighlight()
 

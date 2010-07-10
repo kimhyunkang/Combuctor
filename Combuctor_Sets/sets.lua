@@ -117,6 +117,40 @@ local function isRecipe(player, bagType, name, link, quality, level, ilvl, type,
 end
 CombuctorSet:RegisterSubSet(L.Recipe, L.TradeGood, nil, isRecipe)
 
+-- some subtabs under default trade goods set
+-- TODO: think how will you organize too many tabs under your bag
+local function isCloth(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
+	return type == L.TradeGood and subType == L.Cloth
+end
+CombuctorSet:RegisterSubSet(L.Cloth, L.TradeGood, nil, isCloth)
+
+local function isMeat(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
+	return type == L.TradeGood and subType == L.Meat
+end
+CombuctorSet:RegisterSubSet(L.Meat, L.TradeGood, nil, isMeat)
+
+local function isMetal(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
+	return type == L.TradeGood and subType == L.Metal
+end
+CombuctorSet:RegisterSubSet(L.Metal, L.TradeGood, nil, isMetal)
+
+local function isLeather(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
+	return type == L.TradeGood and subType == L.Leather
+end
+CombuctorSet:RegisterSubSet(L.Leather, L.TradeGood, nil, isLeather)
+
+local function isHerb(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
+	return type == L.TradeGood and subType == L.Herb
+end
+CombuctorSet:RegisterSubSet(L.Herb, L.TradeGood, nil, isHerb)
+
+local function isEnchant(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)
+	-- item id 34055 is Greater Cosmic Essence, which is in a wrong subtype due to Blizzard auction house bug
+	-- moving item id 34055 to enchant category will bypass this bug
+	return (link and (link:match('Hitem:(%d+)') == '34055')) or (type == L.TradeGood and subType == L.Enchant)
+end
+CombuctorSet:RegisterSubSet(L.Enchant, L.TradeGood, nil, isEnchant)
+
 
 --ammo (all bags)
 local function isProjectile(player, bagType, name, link, quality, level, ilvl, type, subType, stackCount, equipLoc)

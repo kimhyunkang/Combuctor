@@ -636,6 +636,8 @@ function InventoryFrame:OnHide()
 
 	--return to showing the current player on close
 	self:SetPlayer(UnitName('player'))
+	--return to showing "all" quality filter on close
+	self:SetQuality(nil)
 end
 
 function InventoryFrame:ToggleFrame(auto)

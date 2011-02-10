@@ -39,7 +39,7 @@ do
 
 	L.Weapon, L.Armor, L.Container, L.Consumable, L.Glyph, L.TradeGood, L.Recipe, L.Gem, L.Misc, L.Quest = GetAuctionItemClasses()
 
-	L.Trinket = getglobal('INVTYPE_TRINKET')
+	L.Trinket = _G['INVTYPE_TRINKET']
 
 	L.Devices, L.Explosives = select(10, GetAuctionItemSubClasses(6))
 	L.Cloth = select(2, GetAuctionItemSubClasses(6))
@@ -49,7 +49,7 @@ do
 	L.Herb = select(6, GetAuctionItemSubClasses(6))
 	L.Enchant = select(7, GetAuctionItemSubClasses(6))
 
-	L.SimpleGem = select(8, GetAuctionItemSubClasses(7))
+	L.SimpleGem = select(8, GetAuctionItemSubClasses(8))
 end
 
 L.Normal = '一般'
